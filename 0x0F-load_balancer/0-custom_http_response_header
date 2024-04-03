@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Configures a new ubuntu machine by installing
+
+# updating packages
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Creating an index page
+echo "Hello World!" | sudo tee /var/www/html/index.html/ 
+
+# Setting up /redirect_me to a github account
+new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Ephyz8 permanent;" 
+
+sudo sed -i "s/server_name -;/$new_string/" /etc/nginx/sites-available/default
+
+# Set up a 404 page
+echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
+
+# custom HTTP response header
+sudo sed -i "/server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+# test for syntax errors
+sudo nginx -t
+
+# restart after making changes
+sudo service nginx restart
