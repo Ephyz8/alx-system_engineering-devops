@@ -40,8 +40,8 @@ frontend nahese-tech-frontend
 
 backend nahese-tech-backend
     balance roundrobin
-    server 471551-web-01 35.174.176.197 check
-    server 471551-web-02 34.234.201.157 check
+    server 471551-web-01 35.174.176.197:80 check
+    server 471551-web-02 34.234.201.157:80 check
 "
 
 # shellcheck disable=SC2154
