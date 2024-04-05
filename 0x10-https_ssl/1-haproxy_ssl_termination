@@ -43,7 +43,7 @@ frontend nahese-frontend
 frontend nahese-frontend-https
         bind *:443 ssl crt /etc/haproxy/certs/www.nahese.tech.pem
         http-request set-header X-Forwarded-Proto https
-        default_backend clickviral-backend
+        default_backend nahese-backend
 
 backend nahese-backend
         balance roundrobin
