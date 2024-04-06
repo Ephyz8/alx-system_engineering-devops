@@ -34,14 +34,14 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 frontend nahese-frontend
-        bind 0:80
+        bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X_Forwarded-Proto http
         default_backend nahese-backend
 
 frontend nahese-frontend-https
-        bind 0:443 ssl crt /etc/haproxy/certs/www.nahese.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.nahese.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend nahese-backend
 
