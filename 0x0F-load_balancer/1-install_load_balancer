@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # script to install and configure HAproxy on load balancer server
 
-sud apt-get update
+sudo apt-get update
 sudo apt-get -y install --no-install-recommends software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
 sudo apt-get -y install haproxy
 
 # the load balancer's configuration
-DOMAIN_NAME='munyasi.tech'
+DOMAIN_NAME='nahese.tech'
 INIT_FILE='/etc/default/haproxy'
 CONFIG_FILE='/etc/haproxy/haproxy.cfg'
 HAPROXY_LB_CONFIG=\
@@ -15,8 +15,8 @@ HAPROXY_LB_CONFIG=\
 #--$DOMAIN_NAME-params-begin--
 backend $DOMAIN_NAME-backend
 	balance roundrobin
-    server 20639-web-01 3.227.217.150:80 check
-    server 20639-web-02 3.95.27.202:80 check
+    server 471551-web-01 35.174.176.197:80 check
+    server 471551-web-02 34.234.201.157:80 check
 
 frontend $DOMAIN_NAME-frontend
 	bind *:80
