@@ -33,17 +33,13 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend nahese-frontend
+frontend nahese
         bind *:80
-        mode http
-        http-request redirect scheme https code 301 unless { ssl_fc }
-        http-request set-header X_Forwarded-Proto http
-        default_backend nahese-backend
-
-frontend nahese-frontend-https
         bind *:443 ssl crt /etc/haproxy/certs/www.nahese.tech.pem
-        http-request set-header X-Forwarded-Proto https
-        default_backend nahese-backend
+        mode http
+        http-request redirect scheme https code 301 if !{ ssl_fc }
+        http-request set-header X_Forwarded-Proto http
+        default_backend nahese
 
 backend nahese-backend
         balance roundrobin
