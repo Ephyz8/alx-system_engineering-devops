@@ -1,0 +1,1 @@
+Using my debugging skills, i fond out what was keeping my Ubuntu container’s Nginx installation from listening on port 80.
