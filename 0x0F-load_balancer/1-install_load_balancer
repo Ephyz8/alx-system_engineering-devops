@@ -34,7 +34,7 @@ CONFIG_WORDS=$(grep -Eco "$DOMAIN_NAME-backend" < $CONFIG_FILE)
 if [ "$(grep -Eco '^ENABLED=[01]$' < $INIT_FILE)" -gt 0 ]; then
 	sudo sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
 else
-	echo 'ENABLED=1' >> $INIT_FILE
+	sudo echo 'ENABLED=1' >> $INIT_FILE
 fi
 
 if [ "$CONFIG_WORDS" -eq 0 ]; then
