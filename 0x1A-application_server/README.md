@@ -1,0 +1,1 @@
+YMy web infrastructure is already serving web pages via Nginx that i installed in my first web stack project. While a web server can also serve dynamic content, this task is usually given to an application server. In this project i will add this piece to my infrastructure, plug it to your Nginx and make it serve my Airbnb clone project.
